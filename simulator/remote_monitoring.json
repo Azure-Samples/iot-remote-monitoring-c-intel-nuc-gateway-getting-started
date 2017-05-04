@@ -1,0 +1,108 @@
+{
+  "modules": [
+    {
+      "name": "IoTHub",
+      "loader": {
+        "name" : "native",
+        "entrypoint" : {
+          "module.path": "/usr/lib64/azureiot/modules/iothub/libiothub.so"
+        }
+      },
+      "args": {
+        "IoTHubName": "<<Azure IoT Hub Name>>",
+        "IoTHubSuffix": "<<Azure IoT Hub Suffix>>",
+        "Transport": "http"
+      }
+    },
+    {
+      "name": "mapping",
+      "loader": {
+        "name": "native",
+        "entrypoint": {
+          "module.path": "/usr/lib64/azureiot/modules/identitymap/libidentity_map.so"
+        }
+      },
+      "args": [
+        {
+          "macAddress": "AA:BB:CC:DD:EE:FF",
+          "deviceId": "<<Azure IoT Hub Device ID>>",
+          "deviceKey": "<<Azure IoT Hub Device Key>>"
+
+        },
+        {
+          "macAddress": "AA:BB:CC:DD:EE:FF",
+          "deviceId": "<<Azure IoT Hub Device ID>>",
+          "deviceKey": "<<Azure IoT Hub Device Key>>"
+        }
+      ]
+    },
+    {
+      "name": "BLE1",
+      "loader": {
+        "name": "native",
+        "entrypoint": {
+          "module.path": "build/libsimulator.so"
+        }
+      },
+      "args": {
+        "macAddress": "01:01:01:01:01:01",
+        "messagePeriod": 2000
+      }
+    },
+    {
+      "name": "BLE2",
+      "loader": {
+        "name": "native",
+        "entrypoint": {
+          "module.path": "build/libsimulator.so"
+        }
+      },
+      "args": {
+        "macAddress": "02:02:02:02:02:02",
+        "messagePeriod": 2000
+      }
+    },
+    {
+      "name": "Logger",
+      "loader": {
+        "name": "native",
+        "entrypoint": {
+          "module.path": "/usr/lib64/azureiot/modules/logger/liblogger.so"
+        }
+      },
+      "args": {
+        "filename": "<</path/to/log-file.log>>"
+      }
+    }
+  ],
+  "links": [
+    {
+      "source": "*",
+      "sink": "Logger"
+    },
+    {
+      "source": "BLE1",
+      "sink": "mapping"
+    },
+    {
+      "source": "BLE2",
+      "sink": "mapping"
+    },
+    {
+      "source": "mapping",
+      "sink": "IoTHub"
+    },
+    {
+      "source": "IoTHub",
+      "sink": "mapping"
+    },
+    {
+      "source": "mapping",
+      "sink": "BLE1"
+    },
+    {
+      "source": "mapping",
+      "sink": "BLE2"
+    }
+  ]
+}
