@@ -24,13 +24,13 @@
       },
       "args": [
         {
-          "macAddress": "AA:BB:CC:DD:EE:FF",
+          "macAddress": "01:01:01:01:01:01",
           "deviceId": "<<Azure IoT Hub Device ID>>",
           "deviceKey": "<<Azure IoT Hub Device Key>>"
 
         },
         {
-          "macAddress": "AA:BB:CC:DD:EE:FF",
+          "macAddress": "02:02:02:02:02:02",
           "deviceId": "<<Azure IoT Hub Device ID>>",
           "deviceKey": "<<Azure IoT Hub Device Key>>"
         }
@@ -71,7 +71,7 @@
         }
       },
       "args": {
-        "filename": "<</path/to/log-file.log>>"
+        "filename": "simulatorlog.txt"
       }
     }
   ],
