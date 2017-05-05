@@ -5,7 +5,7 @@
       "loader": {
         "name" : "native",
         "entrypoint" : {
-          "module.path": "/usr/lib64/azureiot/modules/iothub/libiothub.so"
+          "module.path": "/usr/lib/azureiot/modules/iothub/libiothub.so"
         }
       },
       "args": {
@@ -19,7 +19,7 @@
       "loader": {
         "name": "native",
         "entrypoint": {
-          "module.path": "/usr/lib64/azureiot/modules/identitymap/libidentity_map.so"
+          "module.path": "/usr/lib/azureiot/modules/identitymap/libidentity_map.so"
         }
       },
       "args": [
@@ -67,7 +67,7 @@
       "loader": {
         "name": "native",
         "entrypoint": {
-          "module.path": "/usr/lib64/azureiot/modules/logger/liblogger.so"
+          "module.path": "/usr/lib/azureiot/modules/logger/liblogger.so"
         }
       },
       "args": {
